@@ -3,6 +3,48 @@ import { defineConfig, defineSchema } from "tinacms";
 const schema = defineSchema({
   collections: [
     {
+      label: "Example Collection",
+      name: "example",
+      path: "content/example",
+      format: "mdx",
+      fields: [
+        {
+          name: "body",
+          label: "Main Content",
+          type: "rich-text",
+          isBody: true,
+        },
+        {
+          type: "object",
+          name: "mainImage",
+          label: "Main Image",
+          required: true,
+          fields: [
+            {
+              type: "image",
+              name: "url",
+              label: "Image",
+              required: true,
+            },
+            {
+              type: "string",
+              name: "alt",
+              label: "Alt Text",
+              required: true,
+            },
+          ],
+        },
+      ],
+      // ui: {
+      //   router: ({ document }) => {
+      //     if (document._sys.filename === "home") {
+      //       return `/`;
+      //     }
+      //     return undefined;
+      //   },
+      // },
+    },
+    {
       label: "Page Content",
       name: "page",
       path: "content/page",
